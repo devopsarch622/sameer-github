@@ -124,7 +124,11 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 # Execute the following command to install the calico network plugin on the cluster
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
-#
+# Download k8s worker node setup script
+wget https://raw.githubusercontent.com/devopsarch622/sameer-github/main/k8s_worker_setup_script.sh
+chmod +x k8s_worker_setup_script.sh
+
+# Create a token and copy it to the worker node script to join the master node
 kubeadm token create --print-join-command >> $HOME/k8s_worker_setup_script.sh
 
 for i in $(cat $WORKERIPLIST)
