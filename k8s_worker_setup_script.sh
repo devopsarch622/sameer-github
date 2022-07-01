@@ -77,7 +77,7 @@ apt-get install -y kubelet kubeadm kubectl
 if [ -f /etc/containerd/config.toml ]
 then
 rm -f /etc/containerd/config.toml
-fi
 systemctl restart containerd
+fi
 
 #
