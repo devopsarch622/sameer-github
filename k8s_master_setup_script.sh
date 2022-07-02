@@ -130,6 +130,7 @@ chmod +x k8s_worker_setup_script.sh
 
 # Create a token and copy it to the worker node script to join the master node
 kubeadm token create --print-join-command >> $HOME/k8s_worker_setup_script.sh
+sed -i -e '$asystemctl restart containerd' $HOME/k8s_worker_setup_script.sh
 
 for i in $(cat $WORKERIPLIST)
 do
